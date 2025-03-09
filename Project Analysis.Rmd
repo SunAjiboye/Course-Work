@@ -1,0 +1,78 @@
+---
+title: "Project Analysis"
+output: word_document
+date: "2025-03-09"
+---1. Set Up the Environment
+•	Open R or RStudio.
+•	Load the mtcars dataset:
+data <- mtcars
+data(mtcars)
+Inspect the data to understand its structure:
+head(mtcars)    # View the first few rows
+summary(mtcars) # Get summary statistics of the dataset
+2. Visualize Pairwise Relationships
+•	Create a pair plot to observe relationships between all numeric variables:
+pairs(mtcars, main = "Pair Plot of mtcars")
+•	This will generate a matrix of scatter plots, allowing you to visually detect potential correlations.
+3. Install and Load ggplot2
+•	If ggplot2 is not installed, install it:
+install.packages("ggplot2")
+Load the library:
+library(ggplot2)
+4. Create a Scatter Plot for Horsepower vs. Weight
+•	Visualize the relationship between horsepower (hp) and weight (wt):
+ggplot(mtcars, aes(x = hp, y = wt)) +
+  geom_point(size = 3, color = "blue", shape = 16) + # Customizing points
+  labs(
+    title = "Correlation Between Horsepower and Weight",
+    subtitle = "Analyzing the mtcars Dataset",
+    x = "Horsepower (HP)", # X-axis label
+    y = "Weight (1000 lbs)", # Y-axis label
+    caption = "Data source: mtcars dataset"
+  ) +
+  theme_minimal() + # Apply a minimalistic theme
+  theme(
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5, color = "darkblue"),
+    plot.subtitle = element_text(size = 12, face = "italic", hjust = 0.5),
+    axis.title = element_text(size = 14, face = "bold", color = "darkgray"),
+    axis.text = element_text(size = 12),
+    plot.caption = element_text(size = 10, face = "italic", hjust = 1)
+  )
+•	This creates a customized scatter plot with a clear title, labels, and theme.
+5. Interpret the Results
+•	Pair Plot: Look for patterns across all variables. For example:
+o	Linear relationships.
+o	Clusters of points indicating groups (e.g., cars with similar hp and mpg values).
+•	Scatter Plot: Check the correlation between horsepower and weight. Higher weight (wt) may correspond to higher horsepower (hp), which you can confirm visually.
+6. Refine as Needed
+•	If the relationship isn’t obvious, consider calculating the correlation coefficient:
+cor(mtcars$hp, mtcars$wt) # Calculates the correlation between hp and wt
+cor(mtcars$hp, mtcars$wt) # Calculates the correlation between hp and wt
+•	Add more plots or filter the data if deeper insights are needed.
+By following these steps, you'll be able to run the analysis and interpret how variables in the mtcars dataset relate to each other. Let me know if you encounter any issues or need further clarification!
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
